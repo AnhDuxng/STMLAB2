@@ -6,7 +6,7 @@
   ******************************************************************************
   * @attention
   *
-  * <h2><center>&copy; Copyright (c) 2023 STMicroelectronics.
+  * <h2><center>&copy; Copyright (c) 2022 STMicroelectronics.
   * All rights reserved.</center></h2>
   *
   * This software component is licensed by ST under BSD 3-Clause license,
@@ -326,48 +326,50 @@ static void MX_GPIO_Init(void)
 
 /* USER CODE BEGIN 4 */
 int counter = 200;
-void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
-{
-    if (150 < counter && counter <= 200) {
-        HAL_GPIO_WritePin(EN0_GPIO_Port, EN0_Pin, 0);
-        HAL_GPIO_WritePin(EN1_GPIO_Port, EN1_Pin, 1);
-        HAL_GPIO_WritePin(EN2_GPIO_Port, EN2_Pin, 1);
-        HAL_GPIO_WritePin(EN3_GPIO_Port, EN3_Pin, 1);
-        HAL_GPIO_WritePin(DOT_GPIO_Port, DOT_Pin, 0);
-        display7SEG(1);
-    }
+void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim) {
+  if (150 < counter && counter <= 200) {
+    HAL_GPIO_WritePin(EN0_GPIO_Port, EN0_Pin, 0);
+    HAL_GPIO_WritePin(EN1_GPIO_Port, EN1_Pin, 1);
+    HAL_GPIO_WritePin(EN2_GPIO_Port, EN2_Pin, 1);
+    HAL_GPIO_WritePin(EN3_GPIO_Port, EN3_Pin, 1);
 
-    else if (100 < counter && counter <= 150) {
-        HAL_GPIO_WritePin(EN0_GPIO_Port, EN0_Pin, 1);
-        HAL_GPIO_WritePin(EN1_GPIO_Port, EN1_Pin, 0);
-        HAL_GPIO_WritePin(EN2_GPIO_Port, EN2_Pin, 1);
-        HAL_GPIO_WritePin(EN3_GPIO_Port, EN3_Pin, 1);
-        HAL_GPIO_WritePin(DOT_GPIO_Port, DOT_Pin, 1);
-        display7SEG(2);
-    }
+    HAL_GPIO_WritePin(DOT_GPIO_Port, DOT_Pin, 0);
 
-    else if (50 < counter && counter <= 100) {
-        HAL_GPIO_WritePin(EN0_GPIO_Port, EN0_Pin, 1);
-        HAL_GPIO_WritePin(EN1_GPIO_Port, EN1_Pin, 1);
-        HAL_GPIO_WritePin(EN2_GPIO_Port, EN2_Pin, 0);
-        HAL_GPIO_WritePin(EN3_GPIO_Port, EN3_Pin, 1);
-        HAL_GPIO_WritePin(DOT_GPIO_Port, DOT_Pin, 0);
-        display7SEG(3);
-    }
+    display7SEG(1);
+  }
 
-    else if (0 < counter && counter <= 50) {
-        HAL_GPIO_WritePin(EN0_GPIO_Port, EN0_Pin, 1);
-        HAL_GPIO_WritePin(EN1_GPIO_Port, EN1_Pin, 1);
-        HAL_GPIO_WritePin(EN2_GPIO_Port, EN2_Pin, 1);
-        HAL_GPIO_WritePin(EN3_GPIO_Port, EN3_Pin, 0);
-        HAL_GPIO_WritePin(DOT_GPIO_Port, DOT_Pin, 1);
-        display7SEG(0);
-    }
+  else if (100 < counter && counter <= 150) {
+    HAL_GPIO_WritePin(EN0_GPIO_Port, EN0_Pin, 1);
+    HAL_GPIO_WritePin(EN1_GPIO_Port, EN1_Pin, 0);
+    HAL_GPIO_WritePin(EN2_GPIO_Port, EN2_Pin, 1);
+    HAL_GPIO_WritePin(EN3_GPIO_Port, EN3_Pin, 1);
 
-    counter--;
-    if (counter == 0)	counter = 200;
+    display7SEG(2);
+  }
+
+  else if (50 < counter && counter <= 100) {
+    HAL_GPIO_WritePin(EN0_GPIO_Port, EN0_Pin, 1);
+    HAL_GPIO_WritePin(EN1_GPIO_Port, EN1_Pin, 1);
+    HAL_GPIO_WritePin(EN2_GPIO_Port, EN2_Pin, 0);
+    HAL_GPIO_WritePin(EN3_GPIO_Port, EN3_Pin, 1);
+
+    HAL_GPIO_WritePin(DOT_GPIO_Port, DOT_Pin, 1);
+
+    display7SEG(3);
+  }
+
+  else if (0 < counter && counter <= 50) {
+    HAL_GPIO_WritePin(EN0_GPIO_Port, EN0_Pin, 1);
+    HAL_GPIO_WritePin(EN1_GPIO_Port, EN1_Pin, 1);
+    HAL_GPIO_WritePin(EN2_GPIO_Port, EN2_Pin, 1);
+    HAL_GPIO_WritePin(EN3_GPIO_Port, EN3_Pin, 0);
+
+    display7SEG(0);
+  }
+
+  counter--;
+  if (counter == 0) counter = 200;
 }
-
 /* USER CODE END 4 */
 
 /**
