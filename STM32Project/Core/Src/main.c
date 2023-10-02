@@ -342,6 +342,7 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim) {
   counter--;
   if (counter == 0) counter = 100;
 }
+//TODO
 /* USER CODE END 4 */
 
 /**
