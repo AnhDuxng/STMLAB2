@@ -367,12 +367,28 @@ static void MX_GPIO_Init(void)
 /* USER CODE BEGIN 4 */
 
 
+int counter = 100;
+
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim) {
-    update7SEG(index_led);
+    if (75 < counter && counter <= 100) {
+        update7SEG(index_led);
+    } else if (50 < counter && counter <= 75) {
+        update7SEG(index_led);
+    } else if (25 < counter && counter <= 50) {
+        update7SEG(index_led);
+    } else if (0 < counter && counter <= 25) {
+        update7SEG(index_led);
+    }
+
     index_led++;
     if (index_led == 4)
         index_led = 0;
+
+    counter--;
+    if (counter == 0)
+        counter = 100;
 }
+
 
 
 /* USER CODE END 4 */
