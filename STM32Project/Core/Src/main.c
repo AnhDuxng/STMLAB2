@@ -326,7 +326,6 @@ static void MX_GPIO_Init(void)
 
 /* USER CODE BEGIN 4 */
 int counter = 200;
-
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 {
     if (150 < counter && counter <= 200) {
@@ -334,9 +333,7 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
         HAL_GPIO_WritePin(EN1_GPIO_Port, EN1_Pin, 1);
         HAL_GPIO_WritePin(EN2_GPIO_Port, EN2_Pin, 1);
         HAL_GPIO_WritePin(EN3_GPIO_Port, EN3_Pin, 1);
-
         HAL_GPIO_WritePin(DOT_GPIO_Port, DOT_Pin, 0);
-
         display7SEG(1);
     }
 
@@ -345,9 +342,7 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
         HAL_GPIO_WritePin(EN1_GPIO_Port, EN1_Pin, 0);
         HAL_GPIO_WritePin(EN2_GPIO_Port, EN2_Pin, 1);
         HAL_GPIO_WritePin(EN3_GPIO_Port, EN3_Pin, 1);
-
         HAL_GPIO_WritePin(DOT_GPIO_Port, DOT_Pin, 1);
-
         display7SEG(2);
     }
 
@@ -356,9 +351,7 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
         HAL_GPIO_WritePin(EN1_GPIO_Port, EN1_Pin, 1);
         HAL_GPIO_WritePin(EN2_GPIO_Port, EN2_Pin, 0);
         HAL_GPIO_WritePin(EN3_GPIO_Port, EN3_Pin, 1);
-
         HAL_GPIO_WritePin(DOT_GPIO_Port, DOT_Pin, 0);
-
         display7SEG(3);
     }
 
@@ -367,15 +360,12 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
         HAL_GPIO_WritePin(EN1_GPIO_Port, EN1_Pin, 1);
         HAL_GPIO_WritePin(EN2_GPIO_Port, EN2_Pin, 1);
         HAL_GPIO_WritePin(EN3_GPIO_Port, EN3_Pin, 0);
-
         HAL_GPIO_WritePin(DOT_GPIO_Port, DOT_Pin, 1);
-
         display7SEG(0);
     }
 
     counter--;
-    if (counter == 0)
-        counter = 200;
+    if (counter == 0)	counter = 200;
 }
 
 /* USER CODE END 4 */
